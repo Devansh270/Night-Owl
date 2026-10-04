@@ -1,5 +1,5 @@
 import { Agent } from "@mastra/core/agent";
-import { ollama } from "ollama-ai-provider-v2";
+import { google } from "@ai-sdk/google";
 
 export const nightOwlAgent = new Agent({
   id: "night-owl-debugger",
@@ -136,5 +136,5 @@ If no clear problem is detected, use:
 }
 `,
 
-  model: ollama("qwen2.5:3b"),
+  model: google("gemini-3.8-flash"),
 });
