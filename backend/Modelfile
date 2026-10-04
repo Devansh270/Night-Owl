@@ -1,0 +1,2 @@
+FROM gemma2
+PARAMETER num_gpu 0

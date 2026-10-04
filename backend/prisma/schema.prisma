@@ -1,0 +1,37 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model DebugSession {
+  id        String   @id @default(uuid())
+  domain    String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  analysis DebugAnalysis?
+}
+
+model DebugAnalysis {
+  id        String @id @default(uuid())
+  sessionId String @unique
+
+  problem       String
+  severity      String
+  rootCause     String
+  evidence      String
+  whyItHappened String
+  suggestedFix  String
+  concept       String
+
+  definition      String
+  examWhy         String
+  shortExamAnswer String
+
+  vivaQuestions Json
+
+  session DebugSession @relation(fields: [sessionId], references: [id], onDelete: Cascade)
+}
